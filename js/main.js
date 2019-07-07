@@ -1,7 +1,7 @@
 function castleStart(){
     const fill = document.querySelector('.fill');
     const empties = document.querySelectorAll('.empty');
-
+    var fillClasses;
 
     // Fill listeners
     fill.addEventListener('dragstart', dragStart);
@@ -17,50 +17,72 @@ function castleStart(){
 
     // Drag Functions
 
-    function dragStart() {
-    fillClasses = this.closest("td").classList;
-    this.className += ' hold';
-    setTimeout(() => (this.className = 'invisible'), 0);
+    class Castle {
+        
+        dragStart() {
+            fillClasses = this.closest("td").classList;
+            this.className += ' hold';
+            setTimeout(() => (this.className = 'invisible'), 0);
+        }
 
+        dragEnd() {
+            this.className = 'fill';
+            }
+        
+        dragOver(e) {
+            e.preventDefault();
+            }
+        
+        dragEnter(e) {
+            e.preventDefault();
+            
+            if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
+                this.className += ' hovered';
+            } 
+            }
+        
+        dragLeave() {
+            // this.className = 'empty';
+            this.classList.remove("hovered")    
+            }
+        
+        dragDrop() {
+            // this.className = 'empty';
+            if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
+                this.classList.remove("hovered")  
+                this.append(fill);
+            } 
+            }
+
+    }
+
+    function dragStart() {
+        Castle.dragStart();
     }
 
     function dragEnd() {
-    this.className = 'fill';
-    console.log(fillClasses)
+        Castle.dragEnd();
     }
 
     function dragOver(e) {
-    e.preventDefault();
+        Castle.dragOver();
     }
 
     function dragEnter(e) {
-    e.preventDefault();
-    // if (this.classList[1] === fillClasses[1]){
-    //     this.className += ' hovered';
-    // } else {
-    //     if (this.classList[2] === fillClasses[2]){
-    //         this.className += ' hovered';
-    //     } 
-    // }
-    if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
-        this.className += ' hovered';
-    } 
+        Castle.dragEnter();
     }
 
     function dragLeave() {
-    // this.className = 'empty';
-    this.classList.remove("hovered")    
+        Castle.dragLeave();   
     }
 
     function dragDrop() {
-    // this.className = 'empty';
-    if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
-        this.classList.remove("hovered")  
-        this.append(fill);
-    } 
-    // this.classList.remove("hovered")  
-    // this.append(fill);
+        Castle.dragDrop();
     }
 }
 
+
 castleStart();
+
+
+
