@@ -26,7 +26,7 @@ function castleStart(){
 
     function dragEnd() {
     this.className = 'fill';
-    console.log(fillClasses[2]);
+    console.log(fillClasses)
     }
 
     function dragOver(e) {
@@ -35,10 +35,16 @@ function castleStart(){
 
     function dragEnter(e) {
     e.preventDefault();
-    if (this.classList[2] === fillClasses[2]){
+    // if (this.classList[1] === fillClasses[1]){
+    //     this.className += ' hovered';
+    // } else {
+    //     if (this.classList[2] === fillClasses[2]){
+    //         this.className += ' hovered';
+    //     } 
+    // }
+    if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
         this.className += ' hovered';
-    }
-    // this.className += ' hovered';
+    } 
     }
 
     function dragLeave() {
@@ -48,8 +54,12 @@ function castleStart(){
 
     function dragDrop() {
     // this.className = 'empty';
-    this.classList.remove("hovered")  
-    this.append(fill);
+    if (this.classList[1] === fillClasses[1] || this.classList[2] === fillClasses[2]) {
+        this.classList.remove("hovered")  
+        this.append(fill);
+    } 
+    // this.classList.remove("hovered")  
+    // this.append(fill);
     }
 }
 
