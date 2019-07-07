@@ -1,5 +1,70 @@
+html, body {
+  height: 100%;
+}
+
+#table {
+  width: 100%;
+  height: 100%;
+}
+
+.white {
+  background: white;
+}
+
+.black {
+  background: black;
+}
+
+.grid {
+  width: 50%;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+.grid:after {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+}
+
+.fill {
+  background-image: url("../img/Anonymous_Chess_symbols_set_3.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: 50% 30%;
+  background-color: transparent;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.invisible {
+  display: none;
+}
+
+.empty {
+  position: relative;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+body {
+  background: pink;
 }
 /*# sourceMappingURL=style.css.map */
