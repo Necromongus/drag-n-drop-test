@@ -52,7 +52,7 @@ function castleStart(){
     function handleStart() {
         fillClasses = this.closest("td").classList;
         this.className += ' hold';
-        setTimeout(() => (this.className = 'invisible'), 0);
+        // setTimeout(() => (this.className = 'invisible'), 0);
     }
 
     function handleEnd() {
